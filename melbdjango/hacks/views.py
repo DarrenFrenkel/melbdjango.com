@@ -38,14 +38,14 @@ def idea_detail(request, idea_id):
     idea = get_object_or_404(Idea, pk=idea_id)
 
     return render(request, 'hacks/idea_detail.html', {
-        'object': idea,
+        'idea': idea,
     })
 
 @require_POST
 def idea_vote(request, idea_id, direction):
     '''Cast a vote'''
     idea = get_object_or_404(Idea, pk=idea_id)
-
+    url = idea.get_thank_you_url()
     try:
         with transaction.atomic():
             vote = Vote.objects.create(user=request.user, idea=idea, value=direction)
@@ -53,8 +53,7 @@ def idea_vote(request, idea_id, direction):
         messages.warning(request, 'You can only vote once on each idea.')
     else:
         messages.success(request, 'You %s voted %s!' % (vote.get_value_display(), idea))
-
-    return redirect(idea)
+    return redirect(url)
 
 def idea_comment(request, idea_id):
     '''Post a comment on an Idea'''
@@ -76,4 +75,11 @@ def idea_comment(request, idea_id):
         'object': idea,
         'form': form,
     })
+
+def idea_thank_you(request, idea_id):
+    '''Thank you page for voting for an idea'''
+    idea = get_object_or_404(Idea, pk=idea_id)
+    return render(request, 'hacks/thank-you.html',{
+        'idea': idea,
+    } )	
 

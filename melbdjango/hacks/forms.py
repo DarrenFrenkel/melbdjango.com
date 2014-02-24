@@ -1,5 +1,6 @@
-
+from django.contrib.auth.models import User
 from django import forms
+from django.forms import ModelForm
 
 from . import models
 
@@ -18,4 +19,4 @@ class CommentForm(forms.ModelForm):
         model = models.Comment
         fields = (
             'comment',
-        )
+        )	

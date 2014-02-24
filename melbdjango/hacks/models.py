@@ -20,6 +20,9 @@ class Idea(models.Model):
 
     objects = IdeaManager()
 
+    def __unicode__(self):
+        return self.title		
+	
     @models.permalink
     def get_absolute_url(self):
         return ('idea-detail', (), {'idea_id': self.pk})
@@ -36,6 +39,10 @@ class Idea(models.Model):
     def get_comment_url(self):
         return ('idea-comment', (), {'idea_id': self.pk})
 
+    @models.permalink
+    def get_thank_you_url(self):	
+        return ('idea-thank-you', (), {'idea_id': self.pk})
+	
     @cached_property
     def total_votes(self):
         return self.vote_set.aggregate(total = models.Sum('value'))['total']
@@ -64,3 +71,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+    def __unicode__(self):
+        return self.comment		
