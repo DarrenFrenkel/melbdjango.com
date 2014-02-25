@@ -1,2 +1,28 @@
 {% extends "base.html" %}
-
+{% block extraheader %}
+			{% if user.is_authenticated  %} 
+			<p class="user-info">Hi, {{user.username}} welcome to Melbdjango<span><a class="logout" href="/logout/">LOGOUT</a></p>
+			{% else %}
+			<section class=login>
+			<form action="" method="post">
+					{% csrf_token %}
+						<div class="signin-form">
+							<div class="register_div">
+								
+								<p><label for="username" {% if login_form.username.errors %} class="error" {% endif %}> Username </lable></p>
+								<p>{{ form.username }} </p>
+								{% if form.username.errors %}<p class="error"> {{ form.username.errors }} </p> {% endif %}
+							</div>		
+							<div class="register_div">
+								<p><label for="password" {% if login_form.password.errors %} class="error" {% endif %}>Password</label></p>
+								<p>{{ form.password }}</p>
+								{% if form.password.errors %}<p class="error">{{ form.password.errors }} </p> {% endif %}								
+							</div>
+							<div class="login-button">
+							<button type="submit">Login</button>
+							</div>
+						</div>
+					</form>
+				</section>
+			{% endif %}		
+{% endblock %}
