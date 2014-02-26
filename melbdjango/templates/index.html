@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block extraheader %}
 			{% if user.is_authenticated  %} 
-			<p class="user-info">Hi, {{user.username}} welcome to Melbdjango<span><a class="logout" href="/logout/">LOGOUT</a></p>
 			{% else %}
-			<section class=login>
+			<section class="login">
 			<form action="" method="post">
 					{% csrf_token %}
 						<div class="signin-form">
@@ -19,7 +18,7 @@
 								{% if form.password.errors %}<p class="error">{{ form.password.errors }} </p> {% endif %}								
 							</div>
 							<div class="login-button">
-							<button type="submit">Login</button>
+							<button type="submit" class="button1">Login</button>
 							</div>
 						</div>
 					</form>

@@ -14,6 +14,9 @@
     <body>
 
         <div class="page-container">
+		{% if user.is_authenticated  %} 
+			<p class="user-info">Hi {{user.username}}, welcome to Melbdjango.<span><a class="logout" href="/logout/">LOGOUT</a></p>
+			{% endif %}
 			{% block extraheader %} {% endblock%} 
 
 				
@@ -25,7 +28,9 @@
                         <ul>
                             <li><a href="/posts/">Posts</a></li>
                             <li><a href="/hacks/">Hacks</a></li>
-							{% if user.is_authenticated  %} {% else %}<li><a href="/register/">Sign Up</a></li> {% endif %}
+							{% if user.is_authenticated  %}
+							<li><a href="/hacks/add">Add a Hack</a></li>
+							{% else %}<li><a href="/register/">Sign Up</a></li> {% endif %}
                             {# <li><a href="/events/">Events</a></li> #}
                         </ul>
                     </nav>

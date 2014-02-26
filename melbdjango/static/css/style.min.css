@@ -10,7 +10,7 @@
 
  .signin-form{
 	clear:both;
-	margin-left: 459px;
+	margin-left: 455px;
 	margin-top: -98px;
 }
 
@@ -44,7 +44,7 @@
 	height: 27px;
 }
 
-.login-button button{
+.button1{
 	background-color: #61992A;
 	color: #FFFFFF;
 	font-weight: 700;
@@ -52,8 +52,6 @@
 	border-radius: 7px;
 	font-size: 13px;
 	border: 2px solid white;
-	height: 26px;
-	width: 61px;
 }
 
 .errorlist{
@@ -66,7 +64,7 @@
 }
 
 .user-info{
-	margin-left: 515px;
+	margin-left: 512px;
 	margin-top: -81px;
 	font-weight: 700;
 	color: #61992A;
@@ -88,11 +86,36 @@
 	margin-top: -18px;
 }
 
-nav a{
+nav a, .vote a{
 	color: #61992A;
 	font-weight: 800;
 	font-family: '‌‌‌BMitra';
 	font-size: 17px;
 	text-decoration: none;
 }
+
+.register-form input{
+	border-radius: 4px
+}
+
+.login-button button{
+	height: 26px;
+	width: 61px;
+}
+
+#idea-button{
+	width: 115px;
+	height: 38px;
+	font-size: 15px;
+	font-weight: 800;
+	margin-top: -8px;
+}
+
+#submit-idea-button{
+	height: 34px;
+	width: 83px;
+}
+
+.add-idea-form label{
+	padding: 7px 0;
 }

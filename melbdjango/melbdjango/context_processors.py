@@ -1,4 +1,4 @@
-from .forms import LoginForm
+from members.forms import LoginForm
 
 def include_login_form(request):
     form = LoginForm()

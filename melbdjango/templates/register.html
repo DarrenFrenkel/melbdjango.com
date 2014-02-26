@@ -3,6 +3,7 @@
 {% block content %}
 <form action="" method="post">
 {% csrf_token %}
+<div class = "register-form">
 {% if form.errors %}<p>Please correct the following fields</p>{% endif %}
 <div class="register_div">
 	{% if form.username.errors %}<p class="error"> {{ form.username.errors }} </p> {% endif %}
@@ -24,7 +25,10 @@
 	<p><label for="password1" {% if form.password1.errors %} class="error" {% endif %}>Verify Password:</label></p>
 	<p>{{ form.password1 }}</p>	
 </div>
-<p><input type="submit" alt="register"> </p>
+<div class="login-button">
+<button type="submit" class="button1" >Submit</button>
+</div>
+</div>
 </form>
 
 {% endblock %}

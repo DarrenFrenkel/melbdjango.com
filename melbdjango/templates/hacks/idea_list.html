@@ -34,4 +34,8 @@
         {% endfor %}
     </tbody>
 </table>
+
+{% if user.is_authenticated %}
+<a href ="/hacks/add"><button class="button1" id="idea-button">Add an Idea</button></a>
+{% endif %}
 {% endblock %}
