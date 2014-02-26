@@ -16,7 +16,8 @@ def member_registration(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():		
-            user = User.objects.create(username=form.cleaned_data['username'], email= form.cleaned_data['email'], password = form.cleaned_data['password'])	
+            user = User(username=form.cleaned_data['username'], email= form.cleaned_data['email'])
+            user.set_password(form.cleaned_data['password']) 			
             user.backend='django.contrib.auth.backends.ModelBackend'			
             user.save()
             login(request, user)			
@@ -33,11 +34,10 @@ def member_signin(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = User.objects.get(username=form.cleaned_data['username'])
             hacker = authenticate(username=username, password=password)
             if hacker is not None:
-                login(request, hacker)
-                return render(request, 'index.html', {'form':form, 'user':user})
+                login(request, hacker)		
+                return render(request, 'index.html', {'form':form})
             else:
                 return render(request, 'index.html', {'form':form})
         else:
@@ -45,3 +45,5 @@ def member_signin(request):
     else:
         form = LoginForm()
         return render(request, 'index.html', {'form':form})		
+	
+
