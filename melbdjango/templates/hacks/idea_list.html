@@ -6,11 +6,11 @@
 <table>
     <thead>
         <tr>
-            <th> Idea </th>
-            <th> Posted </th>
-            <th> Votes </th>
+            <th class="ideas-table-head"> Idea </th>
+            <th class="ideas-table-head"> Posted </th>
+            <th class="ideas-table-head"> Votes </th>
             {% if user.is_authenticated %}
-            <th> Vote! </th>
+            <th class="ideas-table-head"> Vote! </th>
             {% endif %}
         </tr>
     </thead>
@@ -22,11 +22,11 @@
             <td> {{ idea.total_votes }} </td>
             {% if user.is_authenticated %}
             <td>
-                <form method="POST" action="{{ idea.get_voteup_url }}">
-                    {% csrf_token %}<button type="submit">Up!</button>
+                <form class="vote-form" method="POST" action="{{ idea.get_voteup_url }}">
+                    {% csrf_token %}<button type="submit" class="vote-button">+1</button>
                 </form>
-                <form method="POST" action="{{ idea.get_votedown_url }}">{% csrf_token %}
-                    <button type="submit">Down!</button>
+                <form class="vote-form" method="POST" action="{{ idea.get_votedown_url }}">{% csrf_token %}
+                    <button type="submit" class="vote-button">-1</button>
                 </form>
             </tr>
             {% endif %}

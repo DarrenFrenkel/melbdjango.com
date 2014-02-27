@@ -119,3 +119,28 @@ nav a, .vote a{
 .add-idea-form label{
 	padding: 7px 0;
 }
+
+.vote-form{
+	margin-bottom:11px;
+	float:left;
+	margin-right: 7px;
+}
+
+.vote-button{
+background-color: #FFFFFF;
+color: #61992A;
+border: 2px solid #61992A;
+border-radius: 7px;
+width: 63px;
+font-size: 15px;
+font-weight: 800;
+}
+
+.ideas-table-head{
+	color:#026241
+}
+
+h1{
+	font-family: 'Trebuchet MS', sans-serif;
+	color:#124734
+}

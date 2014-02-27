@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 #from django.views.decorators.http import require_POST
 from members.forms import RegistrationForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
-
+from django import forms
 # Create your views here.
 
 def member_registration(request):
@@ -38,7 +38,7 @@ def member_signin(request):
             if hacker is not None:
                 login(request, hacker)		
                 return render(request, 'index.html', {'form':form})
-            else:
+            else:		
                 return render(request, 'index.html', {'form':form})
         else:
                 return render(request, 'index.html', {'form':form})		
