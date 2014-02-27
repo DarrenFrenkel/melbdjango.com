@@ -148,3 +148,13 @@ h1{
 .add-form input, .add-form textarea{
 	border-radius:4px;
 }
+
+.userpass-error{
+	color: red;
+	font-size: 11px;
+	margin-right: 196px;
+	margin-top: -44px;
+	position: static;
+	float:right;
+}
+}

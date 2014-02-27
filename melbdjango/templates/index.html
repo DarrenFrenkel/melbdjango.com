@@ -7,21 +7,24 @@
 					{% csrf_token %}
 						<div class="signin-form">
 							<div class="register_div">
-								
-								<p><label for="username" {% if login_form.username.errors %} class="error" {% endif %}> Username </lable></p>
+								<p><label for="username"> Username </lable></p>
 								<p>{{ form.username }} </p>
 								{% if form.username.errors %}<p class="error"> {{ form.username.errors }} </p> {% endif %}
 							</div>		
 							<div class="register_div">
-								<p><label for="password" {% if login_form.password.errors %} class="error" {% endif %}>Password</label></p>
+								<p><label for="password" >Password</label></p>
 								<p>{{ form.password }}</p>
 								{% if form.password.errors %}<p class="error">{{ form.password.errors }} </p> {% endif %}								
 							</div>
 							<div class="login-button">
 							<button type="submit" class="button1">Login</button>
 							</div>
+
 						</div>
 					</form>
 				</section>
+				<section >
+											{% if comment %}<li class="userpass-error">{{comment}} </li>{%endif%}
+											</section>
 			{% endif %}		
 {% endblock %}

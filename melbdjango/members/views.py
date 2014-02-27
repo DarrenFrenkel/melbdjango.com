@@ -16,9 +16,7 @@ def member_registration(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():		
-            user = User(username=form.cleaned_data['username'], email= form.cleaned_data['email'])
-            user.set_password(form.cleaned_data['password']) 			
-            user.backend='django.contrib.auth.backends.ModelBackend'			
+            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])			
             user.save()
             login(request, user)			
             return redirect('/')
@@ -31,6 +29,7 @@ def member_registration(request):
 def member_signin(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        comment = "Wrong username or password"		
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -38,8 +37,8 @@ def member_signin(request):
             if hacker is not None:
                 login(request, hacker)		
                 return render(request, 'index.html', {'form':form})
-            else:		
-                return render(request, 'index.html', {'form':form})
+            else:    			
+                return render(request, 'index.html', {'form':form, 'comment':comment})
         else:
                 return render(request, 'index.html', {'form':form})		
     else:
