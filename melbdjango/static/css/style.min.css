@@ -144,3 +144,7 @@ h1{
 	font-family: 'Trebuchet MS', sans-serif;
 	color:#124734
 }
+
+.add-form input, .add-form textarea{
+	border-radius:4px;
+}

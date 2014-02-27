@@ -10,12 +10,12 @@
 	<div class="register_div">
 		
 		<p><label for="title" {% if login_form.title.errors %} class="error" {% endif %}> Title </lable></p>
-		<p>{{ form.title }} </p>
+		<p class="add-form">{{ form.title }} </p>
 		{% if form.title.errors %}<p class="error"> {{ form.title.errors }} </p> {% endif %}
 	</div>		
 	<div class="register_div">
 		<p><label for="description" {% if form.description.errors %} class="error" {% endif %}>Description</label></p>
-		<p>{{ form.description }}</p>
+		<p class="add-form">{{ form.description }}</p>
 		{% if form.description.errors %}<p class="error">{{ form.description.errors }} </p> {% endif %}								
 	</div>
 </table>
