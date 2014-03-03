@@ -16,14 +16,14 @@
 	<p>{{ form.email }}</p>	
 </div>		
 <div class="register_div">
-	{% if form.password.errors %}<p class="error">{{ form.password.errors }} </p> {% endif %}
-	<p><label for="password" {% if form.password.errors %} class="error" {% endif %}>Password:</label></p>
-	<p>{{ form.password }}</p>	
+	{% if form.password1.errors %}<p class="error">{{ form.password1.errors }} </p> {% endif %}
+	<p><label for="password" {% if form.password1.errors %} class="error" {% endif %}>Password:</label></p>
+	<p>{{ form.password1 }}</p>	
 </div>
 <div class="register_div">
-	{% if form.password1.errors %}<p class="error">{{ form.password1.errors }} </p> {% endif %}
-	<p><label for="password1" {% if form.password1.errors %} class="error" {% endif %}>Verify Password:</label></p>
-	<p>{{ form.password1 }}</p>	
+	{% if form.password2.errors %}<p class="error">{{ form.password2.errors }} </p> {% endif %}
+	<p><label for="password1" {% if form.password2.errors %} class="error" {% endif %}>Verify Password:</label></p>
+	<p>{{ form.password2 }}</p>	
 </div>
 <div class="login-button">
 <button type="submit" class="button1" >Submit</button>
