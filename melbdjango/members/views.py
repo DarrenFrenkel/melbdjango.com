@@ -16,7 +16,9 @@ def member_registration(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():		
-            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])			
+            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'])
+            user.set_password(form.cleaned_data['password'])
+            user.backend='django.contrib.auth.backends.ModelBackend'			
             user.save()
             login(request, user)			
             return redirect('/')

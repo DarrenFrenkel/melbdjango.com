@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.functional import cached_property
+from django.core.urlresolvers import reverse
 
 from datetime import datetime
 
@@ -23,25 +24,20 @@ class Idea(models.Model):
     def __unicode__(self):
         return self.title		
 	
-    @models.permalink
     def get_absolute_url(self):
-        return ('idea-detail', (), {'idea_id': self.pk})
+        return reverse('idea-detail', args=[str(self.id)])
 
-    @models.permalink
     def get_voteup_url(self):
-        return ('idea-vote-up', (), {'idea_id': self.pk})
+        return reverse('idea-vote-up', args=[str(self.id)])
 
-    @models.permalink
     def get_votedown_url(self):
-        return ('idea-vote-down', (), {'idea_id': self.pk})
+        return reverse('idea-vote-down', args=[str(self.id)])
 
-    @models.permalink
     def get_comment_url(self):
         return ('idea-comment', (), {'idea_id': self.pk})
 
-    @models.permalink
     def get_thank_you_url(self):	
-        return ('idea-thank-you', (), {'idea_id': self.pk})
+        return reverse('idea-thank-you', args=[str(self.id)])
 	
     @cached_property
     def total_votes(self):
