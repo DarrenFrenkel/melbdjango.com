@@ -81,4 +81,4 @@ def idea_thank_you(request, idea_id):
     idea = get_object_or_404(Idea, pk=idea_id)
     return render(request, 'hacks/thank_you.html',{
         'idea': idea,
-    } )	
+    } )

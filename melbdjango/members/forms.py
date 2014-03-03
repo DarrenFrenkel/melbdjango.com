@@ -18,5 +18,4 @@ class RegistrationForm(UserCreationForm):
 		
 class LoginForm(forms.Form):
     username = forms.CharField(label=(u'User Name'), max_length=30)
-    password = forms.CharField(label=(u'Password'), widget=forms.PasswordInput(render_value=False), max_length=30)
-			
+    password = forms.CharField(label=(u'Password'), widget=forms.PasswordInput(render_value=False), max_length=30)		

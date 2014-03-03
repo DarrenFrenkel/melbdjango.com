@@ -69,4 +69,4 @@ class Comment(models.Model):
         ordering = ('created',)
 
     def __unicode__(self):
-        return self.comment		
+        return self.comment
