@@ -157,4 +157,7 @@ h1{
 	position: static;
 	float:right;
 }
+.error{
+	color: red;
+	font-size: 11px;
 }

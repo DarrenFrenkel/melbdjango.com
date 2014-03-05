@@ -12,16 +12,15 @@ from django import forms
 
 def member_registration(request):
     if request.user.is_authenticated():
-        return redirect('/')
+        return redirect('home')
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.email = form.cleaned_data['email']
             user.backend='django.contrib.auth.backends.ModelBackend'			
             user.save()
             login(request, user)			
-            return redirect('/')
+            return redirect('home')
         else:
             return render(request, 'register.html', {'form':form})
     else:
@@ -30,8 +29,7 @@ def member_registration(request):
 	
 def member_signin(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        comment = "Wrong username or password"		
+        form = LoginForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -40,7 +38,7 @@ def member_signin(request):
                 login(request, hacker)		
                 return render(request, 'index.html', {'form':form})
             else:    			
-                return render(request, 'index.html', {'form':form, 'comment':comment})
+                return render(request, 'index.html', {'form':form})
         else:
                 return render(request, 'index.html', {'form':form})		
     else:

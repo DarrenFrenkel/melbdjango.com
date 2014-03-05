@@ -6,6 +6,7 @@
 			<form action="" method="post">
 					{% csrf_token %}
 						<div class="signin-form">
+
 							<div class="register_div">
 								<p><label for="username"> Username </lable></p>
 								<p>{{ form.username }} </p>
@@ -19,12 +20,13 @@
 							<div class="login-button">
 							<button type="submit" class="button1">Login</button>
 							</div>
-
+							{% if form.non_field_errors %}
+							{% for error in form.non_field_errors %}
+							<li class="error">{{ error }}</li>
+							{% endfor %}
+							{% endif %}
 						</div>
 					</form>
 				</section>
-				<section >
-											{% if comment %}<li class="userpass-error">{{comment}} </li>{%endif%}
-											</section>
 			{% endif %}		
 {% endblock %}

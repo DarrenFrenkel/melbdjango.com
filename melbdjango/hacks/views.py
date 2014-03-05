@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
@@ -26,7 +25,7 @@ def idea_add(request):
             idea = form.save(commit=False)
             idea.owner = request.user
             idea.save()
-            return redirect('/hacks/')
+            return redirect('idea-list')
     else:
         form = IdeaForm()
     return render(request, 'hacks/idea_form.html', {
@@ -45,7 +44,7 @@ def idea_detail(request, idea_id):
 def idea_vote(request, idea_id, direction):
     '''Cast a vote'''
     idea = get_object_or_404(Idea, pk=idea_id)
-    url = idea.get_thank_you_url()
+    url = idea.get_absolute_url()
     try:
         with transaction.atomic():
             vote = Vote.objects.create(user=request.user, idea=idea, value=direction)

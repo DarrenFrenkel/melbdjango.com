@@ -34,10 +34,7 @@ class Idea(models.Model):
         return reverse('idea-vote-down', args=[str(self.id)])
 
     def get_comment_url(self):
-        return ('idea-comment', (), {'idea_id': self.pk})
-
-    def get_thank_you_url(self):	
-        return reverse('idea-thank-you', args=[str(self.id)])
+        return reverse('idea-comment', args=[str(self.id)])
 	
     @cached_property
     def total_votes(self):
